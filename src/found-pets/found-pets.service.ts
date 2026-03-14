@@ -62,7 +62,7 @@ export class FoundPetsService {
 
     // 2. Buscar mascotas perdidas en radio de 500 metros
     this.logger.log(
-      `🔍 Buscando mascotas perdidas cerca de [${dto.latitude}, ${dto.longitude}]...`,
+      `Buscando mascotas perdidas cerca de [${dto.latitude}, ${dto.longitude}]...`,
     );
 
     const nearbyLostPets = await this.lostPetsService.findNearby(
@@ -72,7 +72,7 @@ export class FoundPetsService {
     );
 
     this.logger.log(
-      `📍 Se encontraron ${nearbyLostPets.length} mascotas perdidas en el área`,
+      `Se encontraron ${nearbyLostPets.length} mascotas perdidas en el área`,
     );
 
     // 3. Enviar correo por cada mascota perdida cercana
@@ -80,11 +80,11 @@ export class FoundPetsService {
       try {
         await this.mailService.sendFoundPetNotification(foundPet, lostPet);
         this.logger.log(
-          `📧 Correo enviado al dueño de ${lostPet.name} (${lostPet.owner_email})`,
+          `Correo enviado al dueño de ${lostPet.name} (${lostPet.owner_email})`,
         );
       } catch (error) {
         this.logger.error(
-          `❌ Error al enviar correo a ${lostPet.owner_email}: ${error.message}`,
+          `Error al enviar correo a ${lostPet.owner_email}: ${error.message}`,
         );
       }
     }

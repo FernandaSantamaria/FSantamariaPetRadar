@@ -2,15 +2,15 @@
 
 API REST desarrollada con **NestJS** + **PostgreSQL** + **PostGIS** para registrar mascotas perdidas y encontradas, con búsqueda geoespacial y notificaciones por correo.
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- 📋 Registrar mascotas **perdidas** con coordenadas GPS
-- 📋 Registrar mascotas **encontradas** con coordenadas GPS
-- 🗺️ Búsqueda automática por radio de **500 metros** con PostGIS (`ST_DWithin`)
-- 📧 Envío automático de **correo de notificación** al registrar mascota encontrada
-- 🗺️ Correo incluye **mapa estático de Mapbox** con ambas ubicaciones
+- Registrar mascotas **perdidas** con coordenadas GPS
+- Registrar mascotas **encontradas** con coordenadas GPS
+- Búsqueda automática por radio de **500 metros** con PostGIS (`ST_DWithin`)
+- Envío automático de **correo de notificación** al registrar mascota encontrada
+- Correo incluye **mapa estático de Mapbox** con ambas ubicaciones
 
-## 🛠️ Tecnologías
+##  Tecnologías
 
 | Tecnología | Uso |
 |---|---|
@@ -21,13 +21,13 @@ API REST desarrollada con **NestJS** + **PostgreSQL** + **PostGIS** para registr
 | Mapbox Static API | Mapa en el correo |
 | Docker | Levantar la BD |
 
-## 🚀 Instalación
+##  Instalación
 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/TuApellidoPetRadar.git
-cd TuApellidoPetRadar
+git clone 
+cd FSantamariaPetRadar
 ```
 
 ### 2. Instalar dependencias
@@ -61,13 +61,12 @@ MAIL_FROM=PetRadar <tu-correo@gmail.com>
 MAIL_TO=notificaciones@petradar.com
 
 # Mapbox
-MAPBOX_TOKEN=pk.eyJ1...
+MAPBOX_TOKEN=
 
 # App
 PORT=3000
 ```
 
-> **Nota Gmail:** Activa "Contraseñas de aplicación" en tu cuenta Google para obtener `MAIL_PASSWORD`.
 
 ### 4. Levantar PostgreSQL con PostGIS
 
@@ -81,16 +80,11 @@ docker-compose up -d
 # Desarrollo
 npm run start:dev
 
-# Producción
-npm run build
-npm run start:prod
-```
-
 La API estará disponible en: `http://localhost:3000`
 
 ---
 
-## 📡 Endpoints
+##  Endpoints
 
 ### Mascotas Perdidas
 
@@ -100,14 +94,14 @@ Registrar una mascota perdida.
 **Body:**
 ```json
 {
-  "name": "Firulais",
+  "name": "Lorenzo",
   "species": "perro",
   "breed": "Labrador",
-  "color": "amarillo",
+  "color": "café",
   "size": "grande",
   "description": "Collar azul, muy amigable",
-  "photo_url": "https://example.com/firulais.jpg",
-  "owner_name": "Juan Pérez",
+  "photo_url": "https://example.com/Lorenzo.jpg",
+  "owner_name": "Juan Rueda",
   "owner_email": "juan@example.com",
   "owner_phone": "+52 477 123 4567",
   "latitude": 21.1218,
@@ -136,11 +130,11 @@ Registrar una mascota encontrada.
 {
   "species": "perro",
   "breed": "Labrador",
-  "color": "amarillo",
+  "color": "dorado",
   "size": "grande",
   "description": "Encontrado en la calle, parece asustado pero saludable",
   "photo_url": "https://example.com/found.jpg",
-  "finder_name": "María García",
+  "finder_name": "María Meza",
   "finder_email": "maria@example.com",
   "finder_phone": "+52 477 987 6543",
   "latitude": 21.1220,
@@ -161,7 +155,7 @@ Registrar una mascota encontrada.
   "notificationsSent": [
     {
       "id": 1,
-      "name": "Firulais",
+      "name": "Lorenzo",
       "owner_email": "juan@example.com",
       "distance_meters": 47
     }
@@ -174,7 +168,7 @@ Listar todas las mascotas encontradas.
 
 ---
 
-## 🗺️ Búsqueda Geoespacial
+## Búsqueda Geoespacial
 
 La búsqueda usa PostGIS con `ST_DWithin` y cast a `::geography` para que la distancia sea en **metros reales**:
 
@@ -194,15 +188,15 @@ WHERE is_active = true
 ORDER BY distance ASC;
 ```
 
-## 📧 Correo de Notificación
+## Correo de Notificación
 
 El correo incluye:
 - Datos de la mascota encontrada (especie, raza, color, descripción, dirección)
 - Datos de contacto de quien la encontró
 - Datos de tu mascota perdida
-- **Mapa estático de Mapbox** con 🔴 punto rojo (donde se perdió) y 🟢 punto verde (donde fue encontrada)
+- **Mapa estático de Mapbox** donde se perdió y donde se encontró
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 src/

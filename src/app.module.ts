@@ -25,7 +25,7 @@ import { MailModule } from './mail/mail.module';
         password: config.get('DB_PASSWORD', 'postgres'),
         database: config.get('DB_NAME', 'petradar'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        synchronize: true, // Solo para desarrollo - en prod usar migraciones
+        synchronize: true, 
         logging: false,
       }),
     }),
