@@ -64,7 +64,7 @@ export class FoundPetsService {
     this.logger.log(
       `Buscando mascotas perdidas cerca de [${dto.latitude}, ${dto.longitude}]...`,
     );
-
+//radio
     const nearbyLostPets = await this.lostPetsService.findNearby(
       dto.latitude,
       dto.longitude,
