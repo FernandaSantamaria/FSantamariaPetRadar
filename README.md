@@ -1,3 +1,4 @@
+# FSantamariaPetRadar
 # 🐾 PetRadar API
 
 API REST desarrollada con **NestJS** + **PostgreSQL** + **PostGIS** para registrar mascotas perdidas y encontradas, con búsqueda geoespacial y notificaciones por correo.
