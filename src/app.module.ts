@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LostPetsModule } from './lost-pets/lost-pets.module';
 import { FoundPetsModule } from './found-pets/found-pets.module';
 import { MailModule } from './mail/mail.module';
-import { RedisCacheModule } from './cache/redis-cache.modules';
+//import { RedisCacheModule } from './cache/redis-cache.modules';
 
 @Module({
   imports: [
@@ -31,9 +31,10 @@ import { RedisCacheModule } from './cache/redis-cache.modules';
       }),
     }),
 
-    RedisCacheModule,
     LostPetsModule,
+
     FoundPetsModule,
+
     MailModule,
   ],
 })
