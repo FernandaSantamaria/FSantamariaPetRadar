@@ -4,10 +4,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LostPetsModule } from './lost-pets/lost-pets.module';
 import { FoundPetsModule } from './found-pets/found-pets.module';
 import { MailModule } from './mail/mail.module';
+import { CacheModule } from '@nestjs/cache-manager'; 
 //import { RedisCacheModule } from './cache/redis-cache.modules';
 
 @Module({
   imports: [
+
+    CacheModule.register({
+      isGlobal: true,
+      ttl: 60*1000,
+    }),
+    
     // Variables de entorno globales
     ConfigModule.forRoot({
       isGlobal: true,
